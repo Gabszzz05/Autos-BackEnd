@@ -18,8 +18,8 @@ public class SearchServiceImpl implements SearchService {
     ResourceLoader resourceLoader;
 
     @Override
-    public String[] findCar(CarRequestDTO carRequestDTO) throws IOException {
-        String[] dataCar = null;
+    public Object[] findCar(CarRequestDTO carRequestDTO) throws IOException {
+        Object[] dataCar = null;
 
         Resource resource = resourceLoader.getResource("classpath:vehiculos.txt");
 
@@ -28,11 +28,11 @@ public class SearchServiceImpl implements SearchService {
             while((line = br.readLine()) != null ) {
                 String[] data = line.split(";");
                 if(carRequestDTO.placa().equals(data[1])){
-                    dataCar = new String[5];
+                    dataCar = new Object[5];
                     dataCar[0] = data[2];
                     dataCar[1] = data[3];
-                    dataCar[2] = data[4];
-                    dataCar[3] = data[5];
+                    dataCar[2] = Integer.parseInt(data[4]);
+                    dataCar[3] = Double.parseDouble(data[5]);
                     dataCar[4] = data[6];
                     break;
                 }

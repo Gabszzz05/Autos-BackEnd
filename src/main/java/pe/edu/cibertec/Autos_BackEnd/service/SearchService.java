@@ -5,6 +5,6 @@ import java.io.IOException;
 
 public interface SearchService {
 
-    String[] findCar(CarRequestDTO carRequestDTO) throws IOException;
+    Object[] findCar(CarRequestDTO carRequestDTO) throws IOException;
 
 }
